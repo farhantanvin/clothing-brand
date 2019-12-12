@@ -49,7 +49,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="password">
-						<input class="input100" type="email" name="email" placeholder="password">
+						<input class="input100" type="text" name="password" placeholder="password">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 				

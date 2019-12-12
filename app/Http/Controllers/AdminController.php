@@ -4,14 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\user;
+use App\product;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+
+
+
+    function indexHome(Request $request)
+    {
+
+        $user = DB::table('users')->where('userId', session('user.userId'))
+        ->get(); 
+    
+        return view('admin.adminHome')->with('users', $user);
+        
+    }
+
+
+
     function index(Request $request){
 
         //$users = User::all();
-		$users = DB::table('users')->get(); 
+		$users = DB::table('users')
+                            ->where('type',"customer")
+                            ->get(); 
         
         if($request->session()->has('name')){
     		   	return view('admin.index')->with('users', $users);
@@ -59,7 +77,7 @@ class AdminController extends Controller
 
     function add(){
 
-        return view('admin.adduser');
+        return view('admin.addproduct');
     }
 
     function insert(Request $req){
@@ -67,14 +85,24 @@ class AdminController extends Controller
 
 
        //file upload
-        
-
-        $user = new user();
-        $user->username = $req->username;
-        $user->password = $req->password;
-       
+         
+            $file = $req->file('image');
+            $filename= $file->getClientOriginalName();
+            $file->move('storage', $file->getClientOriginalName());
     
-        if($user->save()){
+            $product = new product();
+            $product->name = $req->pname;
+            $product->description = $req->description;
+            $product->price = $req->price;
+            $product->quantity = $req->quantity;
+            $product->ptype = $req->ptype;
+            $product->image = $filename;
+
+
+
+
+
+        if($product->save()){
             return redirect()->route('admin.index');
         }else{
             return redirect()->route('admin.add');

@@ -6,9 +6,7 @@
 			<strong>{{ session('success') }}</strong>
 		</div>
 	@endif
-	<p>
-		<a href="{{ route('formfile') }}" class="btn btn-primary">Upload File</a>
-	</p>
+	
 	<div class="row">
 		@foreach($files as $file)
 		<div class="col-md-4">
