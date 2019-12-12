@@ -46,11 +46,11 @@
                        
                         <li><a class="nav-link" href="{{ route('viewfile') }}"> <strong>Clothing STORE </strong></a></li>
 
-                        <select>
-                            <option>Shirt</option>
-                            <option>pant</option>
-                            <option>Salwar</option>
-                        </select>
+
+                        <div class="dropdown">
+                &nbsp  &nbsp &nbsp &nbsp
+
+                        
                         @else
                         
                         @endguest
@@ -61,7 +61,7 @@
                         <!-- Authentication Links -->
                         @guest
                         <li><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>    
-                        <li><a class="nav-link" href="">profile</a></li>                         
+                        <li><a class="nav-link" href="{{ route('home.index') }}">profile</a></li>                         
                         @endguest
                     </ul>
                 </div>

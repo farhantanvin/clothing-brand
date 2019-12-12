@@ -38,6 +38,24 @@ class AdminController extends Controller
     	}
     }
 
+
+    function productIndex(Request $request)
+
+
+    {
+
+        $product = DB::table('products')
+                            ->get(); 
+        
+        return view('admin.productList')->with('product', $product);
+
+
+
+    }
+
+
+
+
     function details($id){
         $user = DB::table('users')->where('userId', $id)
 					->get(); 
@@ -107,5 +125,8 @@ class AdminController extends Controller
         }else{
             return redirect()->route('admin.add');
         }
+
+
+        
     }
 }

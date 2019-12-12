@@ -12,7 +12,7 @@
 	<h1>Welcome to Admin Home! {{session('user'.'$username')}}</h1>
 	<a href="{{route('admin.add')}}">Add Product</a> | 
 	<a href="{{route('admin.index')}}">Customer List</a> | 
-	
+	<a href="{{route('product.list')}}">Poduct List</a> | 
 	<table>
 	<tr>
 			<!-- <td>ID</td> -->

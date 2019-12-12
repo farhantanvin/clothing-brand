@@ -24,7 +24,6 @@
 	Route::group(['middleware'=>['sess']], function(){
 
 
-
     Route::get('/admin/home', ['as'=>'home.index','uses'=>'AdminController@indexHome']);
 	Route::get('/admin/userList', ['as'=>'admin.index','uses'=>'AdminController@index']);	
 	Route::get('/admin/details/{id}', 'AdminController@details')->name('admin.details');
@@ -38,13 +37,13 @@
 	Route::post('/admin/add', 'AdminController@insert');
 
 
+	Route::get('/admin/productList', 'AdminController@productIndex')->name('product.list');
 
+	Route::post('/admin/productDelete', 'AdminController@ProductDelte')->name('Product.delete');
 
-
-
+	Route::post('/admin/productEdit', 'AdminController@ProductEdit')->name('product.Edit');
 
 	Route::get('/home','HomeController@index')->name('home');
-	Route::get('/mosaic','HomeController@mosaic')->name('mosaic');
 	Route::get('/edit','EditController@index')->name('edit.index');
 	Route::get('/file','FileController@index')->name('viewfile');
 	Route::get('/file/upload','FileController@create')->name('formfile');

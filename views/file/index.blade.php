@@ -11,20 +11,21 @@
 		@foreach($files as $file)
 		<div class="col-md-4">
 			<div class="card">
-				<img class="card-img-top" src="{{ Storage::url($file->path)}}">
+				<img class="card-img-top" src="{{asset('storage/' . $file->image)}}">
 				<div class="card-body">
-					<strong class="card-title">{{ $file->title }}</strong>
-					<p class="card-text">{{ $file->created_at->diffForHumans() }}</p>
+					<strong class="card-title">Product Name: {{ $file->name }}</strong>
+					</br>
+					<strong class="card-title">Description: {{ $file->description }}</strong>
+				</br>
+					<strong class="card-title">Price: {{ $file->price }}</strong>
 					<form action="{{ route('deletefile', $file->id) }}" method="post">
 						@csrf
 						@method('DELETE')
 						&nbsp &nbsp &nbsp &nbsp &nbsp
-						<button type="submit" class="btn btn-danger">Delete</button>
-						<a href="{{ route('edit.index', $file->id) }}" class="btn btn-warning">Edit</a>
-						<a href="{{ route('downloadfile', $file->id) }}" class="btn btn-success">Download</a>
+						
+						<a href="" class="btn btn-success">Add To Cart</a>
 						</br>
-						</br> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						<a href="" class="btn btn-success">View in Home</a>
+						
 					</form>
 				</div>
 			</div>

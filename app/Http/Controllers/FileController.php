@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\File;
 use Illuminate\Support\Facades\Storage;
+use App\product;
 use Mail;
 
 class FileController extends Controller
@@ -16,8 +17,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        $files = File::orderBy('created_at','DESC')->paginate(30);
-        return view('file.index', ['files' => $files]);
+        $product = product::orderBy('name','DESC')->paginate(30);
+        return view('file.index', ['files' =>$product]);
     }
 
     /**
